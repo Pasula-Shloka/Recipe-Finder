@@ -4,7 +4,6 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import RecipeModal from "./components/RecipeModal";
-import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import Recipes from "./pages/Recipes";
 import RecipeDetails from "./pages/RecipeDetails";
@@ -20,10 +19,8 @@ function App() {
   const { favorites, toggleFavorite } = useFavorites();
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] =
-    useState("All");
-  const [selectedRecipe, setSelectedRecipe] =
-    useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
 
   return (
@@ -42,10 +39,7 @@ function App() {
 
       <main className="flex-grow">
         <Routes>
-          <Route
-            path="/"
-            element={<Home />}
-          />
+          <Route path="/" element={<Home />} />
 
           <Route
             path="/recipes"
@@ -62,14 +56,9 @@ function App() {
               />
             }
           />
-<Route
-  path="/add-recipe"
-  element={<AddRecipe />}
-/>
-          <Route
-            path="/recipe/:id"
-            element={<RecipeDetails />}
-          />
+
+          <Route path="/add-recipe" element={<AddRecipe />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
 
           <Route
             path="/wishlist"
@@ -82,24 +71,15 @@ function App() {
             }
           />
 
-          <Route
-            path="/contact"
-            element={<Contact />}
-          />
-
-          <Route
-            path="*"
-            element={<NotFound />}
-          />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
       {selectedRecipe && (
         <RecipeModal
           recipe={selectedRecipe}
-          closeModal={() =>
-            setSelectedRecipe(null)
-          }
+          closeModal={() => setSelectedRecipe(null)}
         />
       )}
 

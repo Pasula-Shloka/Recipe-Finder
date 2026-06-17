@@ -1,6 +1,6 @@
-import React from "react";
+ import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 import App from "./App";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -14,9 +14,9 @@ ReactDOM.createRoot(
   <React.StrictMode>
     <ErrorBoundary>
       <FavoritesProvider>
-        <BrowserRouter>
+        <HashRouter>
           <App />
-        </BrowserRouter>
+        </HashRouter>
       </FavoritesProvider>
     </ErrorBoundary>
   </React.StrictMode>
